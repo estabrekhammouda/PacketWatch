@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PacketWatch - Advanced Network Intrusion Detection System">
+    <title>PacketWatch - Network Intrusion Detection</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ PacketWatch</h1>
+            <p>Network Intrusion Detection System</p>
+        </header>
+
+        <main class="content">
+            <div class="form-section">
+                <h2>Analyze Network Session</h2>
+                <form id="predictionForm">
+                    <div class="form-group">
+                        <label for="session_id">Session ID *</label>
+                        <input type="text" id="session_id" name="session_id" required placeholder="e.g., sess_12345" autocomplete="off">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="network_packet_size">Network Packet Size (bytes) *</label>
+                            <input type="number" id="network_packet_size" name="network_packet_size" required min="0" max="65535" placeholder="e.g., 512">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="protocol_type">Protocol Type *</label>
+                            <select id="protocol_type" name="protocol_type" required>
+                                <option value="">Select Protocol</option>
+                                <option value="TCP">TCP</option>
+                                <option value="UDP">UDP</option>
+                                <option value="ICMP">ICMP</option>
+                                <option value="HTTPS">HTTPS</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="login_attempts">Login Attempts *</label>
+                            <input type="number" id="login_attempts" name="login_attempts" required min="0" max="100" placeholder="e.g., 3">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="session_duration">Session Duration (seconds) *</label>
+                            <input type="number" id="session_duration" name="session_duration" required min="0" step="0.1" placeholder="e.g., 120.5">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="encryption_used">Encryption Type</label>
+                            <select id="encryption_used" name="encryption_used">
+                                <option value="">None</option>
+                                <option value="AES">AES</option>
+                                <option value="DES">DES</option>
+                                <option value="SSL/TLS">SSL/TLS</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ip_reputation_score">IP Reputation Score (0-100) *</label>
+                            <input type="number" id="ip_reputation_score" name="ip_reputation_score" required min="0" max="100" step="0.1" placeholder="e.g., 75.5">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="failed_logins">Failed Logins *</label>
+                            <input type="number" id="failed_logins" name="failed_logins" required min="0" max="100" placeholder="e.g., 2">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="browser_type">Browser Type *</label>
+                            <select id="browser_type" name="browser_type" required>
+                                <option value="">Select Browser</option>
+                                <option value="Chrome">Chrome</option>
+                                <option value="Firefox">Firefox</option>
+                                <option value="Safari">Safari</option>
+                                <option value="Edge">Edge</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unusual Time Access *</label>
+                        <div class="checkbox-group">
+                            <label class="radio-label">
+                                <input type="radio" name="unusual_time_access" value="0" checked>
+                                <span>No (0)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="unusual_time_access" value="1">
+                                <span>Yes (1)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">🔍 Analyze Session</button>
+                </form>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <h2>Analysis Result</h2>
+                <div class="result-card" id="resultCard"></div>
+                <button type="button" class="btn-new" onclick="resetForm()">Analyze Another Session</button>
+            </div>
+
+            <div class="info-section">
+                <h2>How It Works</h2>
+                <ul>
+                    <li>📊 <strong>Real-time Analysis:</strong> Analyzes network session data in real-time</li>
+                    <li>🤖 <strong>ML Model:</strong> Uses scikit-learn trained model for intrusion detection</li>
+                    <li>⚡ <strong>Fast Inference:</strong> Predictions delivered in milliseconds</li>
+                    <li>🎯 <strong>Binary Classification:</strong> Normal (0) or Attack (1)</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>PacketWatch &copy; 2025 | Network Security Intelligence</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

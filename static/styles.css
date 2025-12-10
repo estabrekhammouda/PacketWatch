@@ -1,0 +1,515 @@
+/* ===================================
+   CSS Variables & Reset
+   =================================== */
+:root {
+    --color-primary: #667eea;
+    --color-secondary: #764ba2;
+    --color-success: #4caf50;
+    --color-danger: #f44336;
+    --color-text: #333;
+    --color-text-light: #555;
+    --color-border: #e8e8e8;
+    --color-bg-input: #fafafa;
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+    
+    --border-radius: 8px;
+    --border-radius-lg: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: radial-gradient(circle at 20% 30%, #e0e7ff 0%, #c7d2fe 40%, #f3f4f6 100%),
+                linear-gradient(120deg, #a5b4fc 0%, #f0abfc 100%);
+    background-blend-mode: lighten;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* ===================================
+   Layout
+   =================================== */
+.container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+/* ===================================
+   Header
+   =================================== */
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 40px 0;
+    animation: slideDown 0.6s ease-out;
+}
+
+header h1 {
+    font-size: 2.8em;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-size: 1.15em;
+    opacity: 0.95;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ===================================
+   Sections
+   =================================== */
+.form-section,
+.result-section,
+.info-section {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.form-section h2,
+.result-section h2,
+.info-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    font-size: 1.8em;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+/* ===================================
+   Form Elements
+   =================================== */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    transition: var(--transition);
+    background: var(--color-bg-input);
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+/* Radio Buttons */
+.checkbox-group {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.radio-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.radio-label span {
+    font-size: 1em;
+}
+
+/* ===================================
+   Buttons
+   =================================== */
+.btn-submit,
+.btn-new {
+    width: 100%;
+    padding: 16px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    margin-top: 28px;
+}
+
+.btn-new {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    margin-top: 24px;
+}
+
+.btn-submit::before,
+.btn-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-submit:hover::before,
+.btn-new:hover::before {
+    left: 100%;
+}
+
+.btn-submit:hover,
+.btn-new:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:active,
+.btn-new:active {
+    transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-submit:disabled::before {
+    display: none;
+}
+
+/* ===================================
+   Result Display
+   =================================== */
+.result-card {
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--color-primary);
+    animation: scaleIn 0.4s ease-out;
+}
+
+.result-card.safe {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+    border-left-color: var(--color-success);
+}
+
+.result-card.threat {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+    border-left-color: var(--color-danger);
+}
+
+.result-card.error {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+    border-left-color: var(--color-danger);
+}
+
+.result-status {
+    font-size: 1.7em;
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.result-status.safe {
+    color: var(--color-success);
+}
+
+.result-status.threat {
+    color: var(--color-danger);
+}
+
+.result-details {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.result-details p {
+    margin: 12px 0;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.result-details strong {
+    color: var(--color-text);
+}
+
+.result-details h3 {
+    margin: 20px 0 16px 0;
+    color: var(--color-primary);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* Error Message */
+.error-message {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+}
+
+.error-message strong {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: var(--color-danger);
+}
+
+.error-message p {
+    color: var(--color-text-light);
+    margin-top: 8px;
+}
+
+/* ===================================
+   Info Section
+   =================================== */
+.info-section ul {
+    list-style: none;
+}
+
+.info-section li {
+    padding: 18px 0;
+    color: var(--color-text-light);
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.05em;
+    line-height: 1.8;
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.info-section li:hover {
+    color: var(--color-primary);
+    padding-left: 10px;
+}
+
+.info-section li:last-child {
+    border-bottom: none;
+}
+
+.info-section strong {
+    font-weight: 600;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: white;
+    font-size: 0.95em;
+    margin-top: 40px;
+}
+
+/* ===================================
+   Loading Spinner
+   =================================== */
+.spinner {
+    display: inline-block;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .checkbox-group {
+        gap: 24px;
+    }
+
+    .form-section,
+    .result-section,
+    .info-section {
+        padding: 25px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    header {
+        padding: 30px 0;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+    }
+
+    header p {
+        font-size: 0.95em;
+    }
+
+    .form-section,
+    .result-section,
+    .info-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        font-size: 0.85em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 11px 14px;
+        font-size: 16px;
+    }
+
+    .result-status {
+        font-size: 1.3em;
+    }
+
+    .result-details p {
+        font-size: 0.9em;
+        margin: 10px 0;
+    }
+
+    .info-section li {
+        font-size: 0.95em;
+        padding: 14px 0;
+    }
+}
